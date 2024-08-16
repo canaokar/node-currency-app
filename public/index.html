@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Converter</h1>
+        <form id="converterForm">
+            <input type="text" id="fromCurrency" placeholder="From Currency (e.g., USD)" required>
+            <input type="text" id="toCurrency" placeholder="To Currency (e.g., EUR)" required>
+            <button type="submit">Convert</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('converterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // TODO 6: Get the values from the input fields
+
+
+            // TODO 7: Make a GET request to the /api/convert endpoint with the currency codes
+            fetch(`/api/convert?from=${fromCurrency}&to=${toCurrency}`)
+                .then(response => response.json())
+                .then(data => {
+                    // TODO 8: Display the conversion rate in the `result` div
+
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = `<p>Error: ${error.message}</p>`;
+                });
+        });
+    </script>
+</body>
+</html>
